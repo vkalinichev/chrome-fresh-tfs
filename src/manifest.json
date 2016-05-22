@@ -1,0 +1,23 @@
+{
+  "name": "TFS highlighter",
+  "description": "Highlights and colorizes Microsoft TFS",
+  "author": "Vladimir Kalinichev",
+
+  "content_scripts": [
+    {
+      "css": [ "tfs_colorizer.css" ],
+      "js": [ "tfs_colorizer.js" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+
+  "icons": {
+    "128": "images/logo_128.png",
+    "48": "images/logo_48.png"
+  },
+
+  "manifest_version": 2,
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "version": "0.0.1"
+}
