@@ -5,8 +5,7 @@
 
   "content_scripts": [
     {
-      "css": [ "tfs_colorizer.css" ],
-      "js": [ "tfs_colorizer.js" ],
+      "js": [ "tfs_highlighter.js" ],
       "matches": [ "<all_urls>" ]
     }
   ],

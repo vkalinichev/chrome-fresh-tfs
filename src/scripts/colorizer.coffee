@@ -1,110 +1,77 @@
-_ = require "./utils"
+require "./tag.styl"
 
 module.exports = class
 
-    constructor: ( @columns = ["Title"] )->
-        @queue = {}
-        @indexes = {}
-        for column in @columns
-            @queue[ column ] = []
-#        console.log @queue
+    constructor: ->
+        @queue = []
+        @titleIndex = null
+        @counter1 = 0
+        @counter2 = 0
         @bindEvents()
 
 
     bindEvents: ->
         list = document.getElementsByClassName("work-item-list")[0]
 
-        list.addEventListener "DOMNodeInserted", ( event )=>
-            element = event.target
-            classes = element.classList
-            switch
-                when classes.contains( "grid-header-column" )
-                    @processTitles element
-                when classes.contains( "grid-row" )
-                    @processRow element
+        list.addEventListener "DOMNodeInserted", @onEvent
+
+    onEvent: ( event )=>
+        element = event.target
+        classes = element.classList
+
+        if not classes? then return
+
+        switch
+            when classes.contains "grid-row" then @processRow element
+            when classes.contains "grid-header-column" then @processTitles element
+
 
     processTitles: ( element )->
-        name = element.textContent
-        if @columns.includes name
-            @indexes[ name ] = _.getNodeIndex element
+        if element.textContent is "Title"
+            @titleIndex = @getNodeIndex element
             @processQueue name
 
-    processQueue: ( queueName )->
-        queue = @queue[ queueName ]
-        titleIndex = @indexes[ queueName ]
-        console.log "processQueue #{queueName}, index: #{titleIndex}, size: #{queue?.length})"
-        if queue?.length
-            console.log "queue:", queue
-            for element,i in queue
-                if element then @processRow element
-                delete @queue[ "Title" ][i]
-                console.log "processed ##{i} element from queue"
-            console.log "queue:", queue
+
+    processQueue: ->
+        if not @queue?.length then return
+
+        for i in [(@queue.length - 1)..0]
+            element = @queue[i]
+            if element
+                @processRow element
+            @queue.splice i, 1
+
+
+    getPositionInQueue: ( element )->
+        @queue.reduceRight (previous, current, index)->
+            if current.id is element.id then index else previous
+        , null
+
+
+    addToQueue: ( element )->
+        currentIndexInQueue = @getPositionInQueue element
+
+        if currentIndexInQueue?
+            @queue[currentIndexInQueue] = element
+        else
+            @queue.push element
 
 
     processRow: ( element )->
-        index = @indexes[ "Title" ]
-        cell = element.children[index]
 
-        if index?.length
-            console.log "decorate tags for row #{cell.textContent}"
-            _.decorateTags cell
+        if @titleIndex?
+            cell = element.children[ @titleIndex ]
+            @decorateTags cell
         else
-            console.log "add to queue row #{element.textContent}"
-            @queue[ "Title" ].push element
-
-#        if ["Title"]?
-#            titleElement = row.children[ targetColumns["Title"] ]
-#            tagRegexp = /\[.+]/
-#            if tagRegexp.test titleElement.textContent
-#                _.decorateTags titleElement
-#        else
-#            if queueElements[ "Title" ] is undefined
-#                queueElements[ "Title" ] = []
-#            queueElements[ "Title" ].push row
-
-        
-
-#                when event.target.classList.contains( "grid-row" )
-#                    console.info "render row"
+            @addToQueue element
 
 
-#        $ document
-#            .on allevents, @logEvents
-#            .on events, ".work-item-list .grid-row", @onElementChange
-#            .on "DOMNodeInserted", ".grid-header-canvas", @onTitleInsert
+    getNodeIndex: ( element )->
+        [].indexOf.call element.parentNode.children, element
 
-#
-#    logEvents: ( event )->
-#        switch
-#            when event.target.classList.contains( "html" )
-#                console.info "REPAINT ALL"
-#                if targetColumns[ "Title" ]?.length
-#                    @targetColumns[ "Title" ].length = 0
-#                else
-#                    if event.target
-#                        if event.target.className
-#                            console.log event.type, ".#{event.target.className}"
-#                    else
-#                        console.log event.type
-#
-#
-#    onTitleInsert: ( event )=>
-#        element = event.target
-#        title = element.textContent.trim()
-#
-#        if observingTitles.indexOf( title ) >= 0
-#            index = _.getNodeIndex element
-#            targetColumns[ title ] = index
-#            if queueElements[ title ]?.length
-#                for row in queueElements[ title ]
-#                    @process row
-#                queueElements[ title ] = []
-#
-#
-#    onElementChange: (event)=>
-#        element = event.target
-#        if element.classList.contains "grid-row"
-#            @process element
-#
-#
+
+    decorateTags: ( element ) ->
+        template = "<span class='marked_tag'>$1</span> "
+        element.innerHTML = element.innerHTML.replace /\[(.+?)]/g, template
+
+

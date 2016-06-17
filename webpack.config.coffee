@@ -17,8 +17,8 @@ module.exports =
             test: /\.jade$/
             loader: "jade"
         ,
-            test: /\.stylus$/
-            loader: "stylus"
+            test: /\.styl$/
+            loader: "style-loader!css-loader!stylus-loader"
         ]
 
     resolve:
@@ -30,7 +30,7 @@ module.exports =
         ]
 
     plugins: [
-#        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin()
     ]
 
     devtool: 'source-map'
