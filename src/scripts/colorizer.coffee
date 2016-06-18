@@ -19,10 +19,12 @@ module.exports = class
         classes = element.classList
 
         if not classes? then return
+        if classes.contains "marked_tag" then return
 
         switch
-            when classes.contains "grid-row" then @processRow element
             when classes.contains "grid-header-column" then @processTitles element
+            when classes.contains "grid-row" then @processRow element
+            when classes.contains "grid-cell" then @processCell element
 
 
     processTitles: ( element )->
@@ -60,7 +62,7 @@ module.exports = class
 
         if @titleIndex?
             cell = element.children[ @titleIndex ]
-            @decorateTags cell
+            @processCell cell
         else
             @addToQueue element
 
@@ -69,7 +71,8 @@ module.exports = class
         [].indexOf.call element.parentNode.children, element
 
 
-    decorateTags: ( element ) ->
-        element.innerHTML = element.innerHTML.replace /\[(.+?)]/g, tagTemplate()
+    processCell: ( element ) ->
+        html = element.innerHTML
+        element.innerHTML = html.replace /\[(.+?)]/g, tagTemplate()
 
 
