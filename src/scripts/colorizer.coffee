@@ -1,12 +1,11 @@
 require "./tag.styl"
+tagTemplate = require "./tag.jade"
 
 module.exports = class
 
     constructor: ->
         @queue = []
-        @titleIndex = null
-        @counter1 = 0
-        @counter2 = 0
+
         @bindEvents()
 
 
@@ -71,7 +70,6 @@ module.exports = class
 
 
     decorateTags: ( element ) ->
-        template = "<span class='marked_tag'>$1</span> "
-        element.innerHTML = element.innerHTML.replace /\[(.+?)]/g, template
+        element.innerHTML = element.innerHTML.replace /\[(.+?)]/g, tagTemplate()
 
 
