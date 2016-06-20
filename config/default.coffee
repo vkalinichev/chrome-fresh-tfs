@@ -7,3 +7,9 @@ module.exports =
 
     dest: './.build'
     zip: './.zip'
+
+#    webstoreAccount:
+#        extensionId: "$extensionId"
+#        clientId: "$clientId"
+#        clientSecret: "$clientSecret"
+#        refreshToken: "$refreshToken"

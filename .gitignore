@@ -5,3 +5,5 @@
 .deploy
 
 *.log
+
+config/local.*
