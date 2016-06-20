@@ -12,8 +12,11 @@ module.exports = class
     bindEvents: ->
         list = document.getElementsByClassName("work-item-list")[0]
 
+        if not list then return
+
         list.addEventListener "DOMNodeInserted", @onEvent
 
+        
     onEvent: ( event )=>
         element = event.target
         classes = element.classList

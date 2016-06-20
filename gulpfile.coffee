@@ -90,8 +90,9 @@ gulp.task "zip", ->
         .pipe $.zip zipName()
         .pipe gulp.dest config.zip
 
-gulp.task "upload"
-    zipStream = fs.createReadStream zipName()
+gulp.task "upload", ->
+    filename = path.join config.zip, zipName()
+    zipStream = fs.createReadStream filename
 
     webStore = WebStore config.webstoreAccount
     webStore

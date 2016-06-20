@@ -1,11 +1,11 @@
 {
-  "name": "Crisp TFS",
+  "name": "Fresh TFS",
   "description": "Makes a TFS more user-friendly",
   "author": "Vladimir Kalinichev",
 
   "content_scripts": [
     {
-      "js": [ "crisp_tfs.js" ],
+      "js": [ "fresh_tfs.js" ],
       "matches": [ "<all_urls>" ]
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "name": "crisp_tfs",
+  "name": "fresh_tfs",
   "version": "0.0.19",
   "description": "Makes a TFS more user-friendly",
   "dependencies": {
