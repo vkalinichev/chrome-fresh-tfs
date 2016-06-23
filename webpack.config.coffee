@@ -7,7 +7,7 @@ module.exports =
     context: path.join __dirname, "/src/scripts"
 
     output:
-        filename: "#{config.appname}.js"
+        filename: "[name].js"
 
     module:
         loaders: [

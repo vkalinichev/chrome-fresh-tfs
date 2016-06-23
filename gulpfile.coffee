@@ -1,6 +1,7 @@
 gulp = require "gulp"
 del = require "del"
 path = require "path"
+named = require "vinyl-named"
 WebStore = require "chrome-webstore-upload"
 fs = require "fs"
 
@@ -11,6 +12,10 @@ webpackStream = require "webpack-stream"
 webpackConfig = require "./webpack.config"
 
 postcssImportanter = require "postcss-importanter"
+
+
+
+# Helpers #
 
 errorHandler = (error)->
     console.error( error.message, error.stack )
@@ -25,7 +30,7 @@ zipName = ->
 
 gulp.task "default", [ "build", "watch" ]
 
-gulp.task "build", $.sequence "clean", [ "styles", "scripts", "images", "copy:resources" ], "zip"
+gulp.task "build", $.sequence "clean", [ "styles", "scripts", "images", "templates", "copy:resources" ], "zip"
 
 gulp.task "release", $.sequence "bump", "build", "upload"
 
@@ -41,18 +46,36 @@ gulp.task "clean", ->
 # Build and copying #
 
 gulp.task "styles", ->
-    gulp.src "./src/styles/app.styl"
+    $filter = $.filter "**/app.css", restore: true
+
+    gulp.src "./src/styles/*.styl"
         .pipe $.plumber errorHandler
         .pipe $.stylus { compress: true }
         .pipe $.postcss [ postcssImportanter ]
-        .pipe $.rename "#{config.appname}.css"
+        .pipe $filter
+        .pipe $.rename "#{ config.appname }.css"
+        .pipe $filter.restore
+        .pipe gulp.dest config.dest
+
+
+gulp.task "templates", ->
+    gulp.src "./src/templates/*.jade"
+        .pipe $.plumber errorHandler
+        .pipe $.jade { pretty: false }
         .pipe gulp.dest config.dest
 
 
 gulp.task "scripts", ->
-    gulp.src "./src/scripts/app.coffee"
+    $filter = $.filter "**/app.js?(.map)", restore: true
+
+    gulp.src "./src/scripts/*.coffee"
         .pipe $.plumber errorHandler
+        .pipe named()
         .pipe webpackStream webpackConfig
+        .pipe $filter
+        .pipe $.rename
+            basename: config.appname
+        .pipe $filter.restore
         .pipe gulp.dest config.dest
 
 
@@ -98,7 +121,7 @@ gulp.task "upload", ->
     webStore
         .uploadExisting( zipStream )
         .then ( response )->
-            if response?.uploadState is "SUCCESS"
+            if response?[ "uploadState" ] is "SUCCESS"
                 console.log "Upload success"
             else
                 console.error "Upload failed"

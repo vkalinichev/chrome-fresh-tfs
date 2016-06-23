@@ -1,5 +1,5 @@
-Colorizer = require "./colorizer"
+Freshener = require "./core/freshener"
 
-window.colorizer = new Colorizer
+freshener = new Freshener
 
-#console.log colorizer
+window.freshener = freshener

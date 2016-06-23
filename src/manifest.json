@@ -3,16 +3,27 @@
   "description": "Makes a TFS more user-friendly",
   "author": "Vladimir Kalinichev",
 
+  "default_locale": "ru",
+
   "content_scripts": [
     {
-      "js": [ "fresh_tfs.js" ],
+      "js": [ "fresh-tfs.js" ],
       "matches": [ "<all_urls>" ]
     }
   ],
 
+  "background": {
+    "script": "background.js"
+  },
+
   "icons": {
     "128": "images/logo_128.png",
     "48": "images/logo_48.png"
+  },
+  "browser_action": {
+    "default_title": "Fresh TFS",
+    "default_icon": "images/logo_48.png",
+    "default_popup": "options.html"
   },
 
   "manifest_version": 2,

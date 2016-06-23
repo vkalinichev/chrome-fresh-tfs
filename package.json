@@ -1,5 +1,5 @@
 {
-  "name": "fresh_tfs",
+  "name": "fresh-tfs",
   "version": "0.0.19",
   "description": "Makes a TFS more user-friendly",
   "dependencies": {
@@ -22,7 +22,9 @@
     "gulp": "^3.9.1",
     "gulp-bump": "^2.1.0",
     "gulp-debug": "^2.1.2",
+    "gulp-filter": "^4.0.0",
     "gulp-imagemin": "^3.0.1",
+    "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.0",
     "gulp-plumber": "^1.1.0",
@@ -34,6 +36,7 @@
     "jquery": "^3.0.0-beta1",
     "postcss-importanter": "^0.1.0",
     "stylus-loader": "^2.0.0",
+    "vinyl-named": "^1.1.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-stream": "^3.1.0"
   },

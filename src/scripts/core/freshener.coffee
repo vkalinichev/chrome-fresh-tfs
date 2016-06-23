@@ -1,5 +1,6 @@
-require "./tag.styl"
-tagTemplate = require "./tag.jade"
+require "./../tag.styl"
+
+tagTemplate = require "./../tag.jade"
 
 module.exports = class
 
