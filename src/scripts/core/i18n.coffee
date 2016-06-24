@@ -1,7 +1,7 @@
 module.exports = class I18n
 
     localize = ( key )->
-        chrome?.i18n.getMessage key
+        chrome?.i18n?.getMessage key
 
     constructor: ->
         @i18n =
@@ -18,7 +18,7 @@ module.exports = class I18n
             @i18n[ type ].forEach (item)->
                 result = localize item.dataset[ type ]
 
-                if type is text
+                if type is "text"
                     item.innerText = result
                 else
                     item[ type ] = result

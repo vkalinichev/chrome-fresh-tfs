@@ -86,7 +86,7 @@ gulp.task "images", ->
 
 
 gulp.task "copy:resources", ->
-    gulp.src "./src/*.json"
+    gulp.src "./src/**/*.json"
         .pipe gulp.dest config.dest
 
 
