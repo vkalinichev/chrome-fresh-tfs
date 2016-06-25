@@ -11,8 +11,25 @@
 
     .options__item
         label.options__label
+            input.checkbox( type="checkbox" rv-checked="colorizeTags" )
+            | { "LabelColorizeTags" | localize }
+
+        ul.options__group( rv-show="colorizeTags")
+            li.options__item( rv-each-tag="colorizedTags" )
+                span( rv-style-background-color="tag.color | colorize" ) &nbsp;&nbsp;&nbsp;&nbsp;
+                input( type="text" rv-value="tag.name" )
+                button( rv-on-click="deleteTag" ) x
+
+        .options__item
+            span( rv-style-background-color="newTag.color | colorize" ) &nbsp;&nbsp;&nbsp;&nbsp;
+            input( type="text" rv-value="newTag.name" rv-on-keydown="addTagKeyDown" )
+            button( rv-on-click="addTag" rv-disabled="newTag.name | isEmpty" ) +
+
+    .options__item
+        label.options__label
             input.checkbox( type="checkbox" rv-checked="useOtherStyling" )
             | { "LabelStylizeCommon" | localize }
+
 
     .options__buttons
         button.button.button_primary( rv-on-click="save" ) { "Save" | localize }

@@ -8,6 +8,9 @@
     "LabelStylizeTags": {
         "message": "Stylize title-tags:"
     },
+    "LabelColorizeTags": {
+        "message": "Colorize title-tags:"
+    },
     "LabelStylizeCommon": {
         "message": "Stylize other elements:"
     },
