@@ -4,7 +4,7 @@ tagTemplate = require "./../tag.jade"
 
 module.exports = class
 
-    constructor: ->
+    constructor: ( @options )->
         @queue = []
 
         @bindEvents()

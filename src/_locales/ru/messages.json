@@ -1,4 +1,10 @@
 {
+    "AppName": {
+        "message": "Fresh TFS"
+    },
+    "OptionsTitle": {
+        "message": "Настройки Fresh TFS:"
+    },
     "Save": {
         "message": "Сохранить"
     },

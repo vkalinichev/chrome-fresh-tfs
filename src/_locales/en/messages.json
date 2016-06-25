@@ -1,4 +1,16 @@
 {
+    "AppName": {
+        "message": "Fresh TFS"
+    },
+    "OptionsTitle": {
+        "message": "Fresh TFS options:"
+    },
+    "LabelStylizeTags": {
+        "message": "Stylize title-tags:"
+    },
+    "LabelStylizeCommon": {
+        "message": "Stylize other elements:"
+    },
     "Save": {
         "message": "Save"
     },

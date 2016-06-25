@@ -20,7 +20,6 @@ module.exports =
             test: /\.styl$/
             loader: "style-loader!css-loader!stylus-loader"
         ]
-
     resolve:
         extensions: [
             ""
@@ -33,6 +32,9 @@ module.exports =
         new webpack.optimize.UglifyJsPlugin
             compress:
                 warnings: false
+
+        new webpack.ProvidePlugin
+            Rivets: "rivets"
     ]
 
     devtool: 'source-map'

@@ -11,9 +11,6 @@ config = require "config"
 webpackStream = require "webpack-stream"
 webpackConfig = require "./webpack.config"
 
-postcssImportanter = require "postcss-importanter"
-
-
 
 # Helpers #
 
@@ -51,7 +48,6 @@ gulp.task "styles", ->
     gulp.src "./src/styles/*.styl"
         .pipe $.plumber errorHandler
         .pipe $.stylus { compress: true }
-        .pipe $.postcss [ postcssImportanter ]
         .pipe $filter
         .pipe $.rename "#{ config.appname }.css"
         .pipe $filter.restore
@@ -59,7 +55,7 @@ gulp.task "styles", ->
 
 
 gulp.task "templates", ->
-    gulp.src "./src/templates/*.jade"
+    gulp.src "./src/templates/**/*.jade"
         .pipe $.plumber errorHandler
         .pipe $.jade { pretty: false }
         .pipe gulp.dest config.dest
@@ -131,7 +127,8 @@ gulp.task "upload", ->
 # Watch #
 
 gulp.task "watch", ->
-    gulp.watch "./src/scripts/**/*", ["scripts"]
+    gulp.watch "./src/templates/**/*", ["templates"]
+    gulp.watch "./src/scripts/**/*.{coffee,jade,styl}", ["scripts"]
     gulp.watch "./src/styles/**/*",  ["styles"]
     gulp.watch "./src/images/**/*",  ["images"]
-    gulp.watch "./src/*.json", ["copy:resources"]
+    gulp.watch "./src/**/*.json", ["copy:resources"]

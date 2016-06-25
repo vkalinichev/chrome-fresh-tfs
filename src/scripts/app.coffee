@@ -1,5 +1,5 @@
 Freshener = require "./core/freshener"
 
-freshener = new Freshener
+chrome.storage.sync.get ( {options} )->
 
-window.freshener = freshener
+    new Freshener options

@@ -1,0 +1,19 @@
+.options
+    .options__header
+        h1
+            img.img( src="./images/logo_48.png" )
+            | { "OptionsTitle" | localize }
+
+    .options__item
+        label.options__label
+            input.checkbox( type="checkbox" rv-checked="useTagDecorators" )
+            | { "LabelStylizeTags" | localize }
+
+    .options__item
+        label.options__label
+            input.checkbox( type="checkbox" rv-checked="useOtherStyling" )
+            | { "LabelStylizeCommon" | localize }
+
+    .options__buttons
+        button.button.button_primary( rv-on-click="save" ) { "Save" | localize }
+        button.button.button_lite( rv-on-click="cancel" ) { "Cancel" | localize }
