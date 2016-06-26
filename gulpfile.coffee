@@ -105,7 +105,7 @@ gulp.task "bump:manifest.json", ->
 
 
 gulp.task "zip", ->
-    gulp.src path.join config.dest, "**/*.{json,css,js,jpg,jpeg,png,gif}"
+    gulp.src path.join config.dest, "**/*.{json,html,css,js,jpg,jpeg,png,gif}"
         .pipe $.zip zipName()
         .pipe gulp.dest config.zip
 
