@@ -1,5 +1,9 @@
-Freshener = require "./core/freshener"
+list = document.getElementsByClassName("work-item-list")[0]
 
-chrome.storage.sync.get ( {options} )->
+if list
 
-    new Freshener options
+    Freshener = require "./core/freshener"
+
+    chrome.storage.sync.get ( {options} )->
+
+        new Freshener options
