@@ -1,38 +1,48 @@
 .options
-    .options__header
-        h1
-            img.img( src="./images/logo_48.png" )
-            | { "OptionsTitle" | localize }
+    h1.options__header
+        .options__logo
+            include ../../icons/logo.svg
+        //img.options__logo( src="./images/logo_48.png" )
+        .options__title { "OptionsTitle" | localize }
 
-    | Options is under construction
+    .options__item
+        label.checkbox
+            input.checkbox__input( type="checkbox" rv-checked="useTagDecorators" )
+            .checkbox__mark
+                include ../../icons/checkbox.svg
+            | &nbsp;{ "LabelStylizeTags" | localize }
 
-    //-.options__item
-        label.options__label
-            input.checkbox( type="checkbox" rv-checked="useTagDecorators" )
-            | { "LabelStylizeTags" | localize }
+    .options__item
+        label.checkbox
+            input.checkbox__input( type="checkbox" rv-checked="colorizeTags" )
+            .checkbox__mark
+                include ../../icons/checkbox.svg
+            | &nbsp;{ "LabelColorizeTags" | localize }
+            span( rv-show="colorizeTags" ) :
 
-    //-.options__item
-        label.options__label
-            input.checkbox( type="checkbox" rv-checked="colorizeTags" )
-            | { "LabelColorizeTags" | localize }
-
-        ul.options__group( rv-show="colorizeTags")
-            li.options__item( rv-each-tag="colorizedTags" )
-                span( rv-style-background-color="tag.color | colorize" ) &nbsp;&nbsp;&nbsp;&nbsp;
-                input( type="text" rv-value="tag.name" )
-                button( rv-on-click="deleteTag" ) x
-
-        .options__item
-            span( rv-style-background-color="newTag.color | colorize" ) &nbsp;&nbsp;&nbsp;&nbsp;
-            input( type="text" rv-value="newTag.name" rv-on-keydown="addTagKeyDown" )
-            button( rv-on-click="addTag" rv-disabled="newTag.name | isEmpty" ) +
-
-    //-.options__item
-        label.options__label
-            input.checkbox( type="checkbox" rv-checked="useOtherStyling" )
-            | { "LabelStylizeCommon" | localize }
+        ul.options__list( rv-show="colorizeTags")
+            li.options__list-item( rv-each-tag="colorizedTags" )
+                button.options__marker( rv-style-background-color="tag.color | colorize" )
+                = " "
+                input.input.input_tag.options__input( type="text" rv-value="tag.name" rv-placeholder="'TagInputPlaceholder' | localize")
+                = " "
+                button.button.button_tiny.button_evil( rv-on-click="deleteTag" ) x
+            .options__list-item
+                button.options__marker( rv-style-background-color="newTag.color | colorize" )
+                = " "
+                input.input.input_tag.options__input( type="text" rv-value="newTag.name" rv-on-keydown="addTagKeyDown" rv-placeholder="'NewTagInputPlaceholder' | localize")
+                = " "
+                button.button.button_tiny.button_nice( rv-on-click="addTag" rv-disabled="newTag.name | isEmpty" ) +
 
 
-    //-.options__buttons
+    .options__item
+        label.checkbox
+            input.checkbox__input( type="checkbox" rv-checked="useOtherStyling" )
+            .checkbox__mark
+                include ../../icons/checkbox.svg
+            | &nbsp;{ "LabelStylizeCommon" | localize }
+
+
+    .options__buttons
         button.button.button_primary( rv-on-click="save" ) { "Save" | localize }
         button.button.button_lite( rv-on-click="cancel" ) { "Cancel" | localize }

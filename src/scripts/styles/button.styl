@@ -1,0 +1,93 @@
+.button
+    $offset = 2.3px
+    $padding = 7px 16px 6px
+
+    position relative
+
+    margin 0
+    padding $padding
+
+    border none
+
+    font-size 12px
+
+    transform translateY(0)
+    transition .07s 0s ease-in-out
+    transition-property transform, box-shadow
+
+
+    &_primary
+        $color = #46C652
+
+        background $color
+        color #fff
+
+        border-radius 3px
+        box-shadow:
+                0 $offset darken($color, 20%),
+                0 $offset* 1.75 hsla(0, 0%, 0%, .05)
+
+        &:active
+            transform translateY($offset)
+            box-shadow:
+                    0 0 darken($color, 20%),
+                    0 0 hsla(0, 0%, 0%, .07)
+
+    &_lite
+        background none
+        padding 0
+
+        color #666
+        will-change color, transform
+
+        &
+        &:active
+            box-shadow none
+
+        &.button
+            margin $padding
+
+        &:active
+            color #333
+            transform translateY(.8px)
+
+        & + &
+            margin 0 0 0 8px
+
+    &_tiny
+        padding 1.5px 8px 2px
+
+        border-radius 3px
+        transform translateY($offset*-.5)
+
+        &:active
+            transform translateY($offset*.5)
+
+    &_evil
+        $color = #ff4042
+
+        background $color
+        color #fff
+
+        box-shadow:
+            0 $offset darken($color, 40%),
+            0 $offset* 1.75 hsla(0, 0%, 0%, .05)
+
+        &:active
+            box-shadow:
+                0 0 darken($color, 20%),
+                0 0 hsla(0, 0%, 0%, .07)
+    &_nice
+        $color = #2a81ff
+
+        background $color
+        color #fff
+
+        box-shadow:
+            0 $offset darken($color, 20%),
+            0 $offset* 1.75 hsla(0, 0%, 0%, .05)
+
+        &:active
+            box-shadow:
+                0 0 darken($color, 20%),
+                0 0 hsla(0, 0%, 0%, .07)

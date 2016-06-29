@@ -3,16 +3,22 @@
         "message": "Fresh TFS"
     },
     "OptionsTitle": {
-        "message": "Fresh TFS options:"
+        "message": "Fresh TFS"
     },
     "LabelStylizeTags": {
-        "message": "Stylize title-tags:"
+        "message": "Stylize title-tags"
     },
     "LabelColorizeTags": {
-        "message": "Colorize title-tags:"
+        "message": "Colorize title-tags"
     },
     "LabelStylizeCommon": {
-        "message": "Stylize other elements:"
+        "message": "Stylize other elements"
+    },
+    "TagInputPlaceholder": {
+        "message": "Enter tag name"
+    },
+    "NewTagInputPlaceholder": {
+        "message": "New tag"
     },
     "Save": {
         "message": "Save"

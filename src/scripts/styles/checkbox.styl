@@ -1,0 +1,43 @@
+.checkbox
+    $this = checkbox
+    $size = 15px
+    position relative
+
+    &__input
+        width 0
+        margin 0 $size + 4px 0 0
+
+        &:before
+            content ''
+            position absolute
+            top 1px
+            width $size
+            height $size
+
+            background #fff
+            border 1px solid #ccc
+            border-radius 2px
+
+    &__mark
+        opacity 0
+        width $size - 3
+        top 2px
+        left 2px
+        position absolute
+
+        .{$this}__input:checked ~ &
+            opacity 1
+
+    &__label
+        display inline-block
+        color #333
+        white-space nowrap
+        cursor pointer
+
+        &_optional
+            display none
+
+        .{$this}__input:checked ~ &
+            display inline-block
+
+
