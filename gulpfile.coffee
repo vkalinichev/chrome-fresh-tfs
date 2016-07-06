@@ -29,7 +29,7 @@ gulp.task "default", [ "build", "watch" ]
 
 gulp.task "build", $.sequence "clean", [ "styles", "scripts", "images", "templates", "copy:resources" ], "zip"
 
-gulp.task "release", $.sequence "bump", "build", "upload"
+gulp.task "release", $.sequence "build", "upload"
 
 
 

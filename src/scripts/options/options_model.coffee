@@ -1,4 +1,5 @@
 keycode = require "keycode"
+colors = require "../config/colors"
 
 class OptionsModel
 
@@ -6,18 +7,17 @@ class OptionsModel
     colorizeTags: true
     colorizedTags: [
         { color: 0, name: "iteration" }
-        { color: 2, name: "backlog" }
-        { color: 5, name: "screenshotter" }
-        { color: 1, name: "ksu" }
-        { color: 7, name: "installer" }
+        { color: 1, name: "backlog" }
+        { color: 2, name: "ksu 2.0" }
+        { color: 4, name: "js" }
+        { color: 5, name: "c++" }
+        { color: 6, name: "guip" }
     ]
     newTag:
         name: ""
         color: 0
-    colors: [
-        "#ffffdd", "#ffddff", "#ddffff", "#ffdddd", "#ddddff"
-        "#ddffdd", "#eeffdd", "#ddffee", "#ffeedd", "#ffddee"
-    ]
+
+    colors: colors
 
     useOtherStyling: false
 

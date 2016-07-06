@@ -3,8 +3,12 @@ tagTemplate = require "./../tag.jade"
 
 module.exports = class
 
-    constructor: ( @options )->
+    constructor: ( @options = {} )->
         @queue = []
+
+        if @options.colorizeTags
+            for color,i in @options.colors
+                document.documentElement.style.setProperty "--fresh-color-#{i}", color, null
 
         @bindEvents()
 
@@ -63,9 +67,19 @@ module.exports = class
         [].indexOf.call element.parentNode.children, element
 
 
+    escapeRegExp = (str)->
+        str.replace /[\-\[\]\/\{\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"
+
+
     processCell: ( element ) ->
         if @options.useTagDecorators
             html = element.innerHTML
-            element.innerHTML = html.replace /\[(.+?)]/g, tagTemplate()
+            html = html.replace /\[(.+?)]/g, tagTemplate()
 
+            if @options.colorizeTags
+                for tag in @options.colorizedTags
+                    needle = "data-fresh-tfs-tag=\"#{ tag.name }\""
+                    html = html.replace (new RegExp escapeRegExp( needle ), "gi"), "#{ needle } style=\"background-color: var(--fresh-color-#{ tag.color })\""
+
+            element.innerHTML = html
 
