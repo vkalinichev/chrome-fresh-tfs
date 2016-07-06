@@ -1,5 +1,4 @@
 require "./../tag.styl"
-
 tagTemplate = require "./../tag.jade"
 
 module.exports = class
@@ -30,10 +29,7 @@ module.exports = class
 
 
     processTitle: ( element )->
-        time = +new Date
-        if time < @lastGetTitleTime + 100 then return
-
-        if element.textContent is "Title"
+        if element.title is "Title"
             @titleIndex = @getNodeIndex element
             @processQueue()
 
@@ -43,8 +39,7 @@ module.exports = class
 
         for i in [(@queue.length - 1)..0]
             element = @queue[i]
-            if element
-                @processRow element
+            @processRow element, true if element
             @queue.splice i, 1
 
 
@@ -53,7 +48,9 @@ module.exports = class
             @queue.push element
 
 
-    processRow: ( element )->
+    processRow: ( element, forced )->
+        if not forced and @getNodeIndex( element ) is 2
+            delete @titleIndex
 
         if @titleIndex?
             cell = element.children[ @titleIndex ]
