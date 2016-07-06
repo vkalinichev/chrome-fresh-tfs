@@ -6,9 +6,9 @@ class OptionsView
     styles: require "./options.styl"
     elementId: "options"
 
-    model:
-        useTagDecorators: true
-        useOtherStyling: false
+#    model:
+#        useTagDecorators: true
+#        useOtherStyling: false
 
     constructor: ( @options )->
         @el = document.getElementById @elementId

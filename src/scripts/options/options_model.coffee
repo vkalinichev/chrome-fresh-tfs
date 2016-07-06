@@ -14,6 +14,10 @@ class OptionsModel
     newTag:
         name: ""
         color: 0
+    colors: [
+        "#ffffdd", "#ffddff", "#ddffff", "#ffdddd", "#ddddff"
+        "#ddffdd", "#eeffdd", "#ddffee", "#ffeedd", "#ffddee"
+    ]
 
     useOtherStyling: false
 
@@ -53,6 +57,30 @@ class OptionsModel
     addTagKeyDown: ( event )=>
         if event.keyCode is keycode "enter"
             @addTag event
+
+
+    toggleTag: ( event, element )=>
+        tag = @colorizedTags[ element.index ]
+        toggle = -> tag.opened = not tag.opened
+        setTimeout toggle, 0
+
+    toggleNewTagColorPicker: ( event, element )=>
+        toggle = => @newTag.opened = not @newTag.opened
+        setTimeout toggle, 0
+
+    hideTooltips: ( event )=>
+        for tag,index in @colorizedTags
+            tag.opened = false
+        @newTag.opened = false
+
+    setColorForTag: ( event, element )=>
+        color = element[ "%color%" ]
+        tag = element[ "%tag%" ]
+        @colorizedTags[ tag ].color = color
+
+    setColorForNewTag: ( event, element )=>
+        color = element[ "%color%" ]
+        @newTag.color = color
 
 
     cancel: =>
