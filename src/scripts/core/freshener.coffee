@@ -21,18 +21,21 @@ module.exports = class
         classes = element.classList
 
         if not classes? then return
-        if classes.contains "marked_tag" then return
+        if classes.contains "fresh-tfs-tag" then return
 
         switch
-            when classes.contains "grid-header-column" then @processTitles element
+            when classes.contains "grid-header-column" then @processTitle element
             when classes.contains "grid-row" then @processRow element
             when classes.contains "grid-cell" then @processCell element
 
 
-    processTitles: ( element )->
+    processTitle: ( element )->
+        time = +new Date
+        if time < @lastGetTitleTime + 100 then return
+
         if element.textContent is "Title"
             @titleIndex = @getNodeIndex element
-            @processQueue name
+            @processQueue()
 
 
     processQueue: ->
@@ -45,18 +48,8 @@ module.exports = class
             @queue.splice i, 1
 
 
-    getPositionInQueue: ( element )->
-        @queue.reduceRight (previous, current, index)->
-            if current.id is element.id then index else previous
-        , null
-
-
     addToQueue: ( element )->
-        currentIndexInQueue = @getPositionInQueue element
-
-        if currentIndexInQueue?
-            @queue[currentIndexInQueue] = element
-        else
+        unless @queue.includes element
             @queue.push element
 
 
@@ -74,7 +67,8 @@ module.exports = class
 
 
     processCell: ( element ) ->
-        html = element.innerHTML
-        element.innerHTML = html.replace /\[(.+?)]/g, tagTemplate()
+        if @options.useTagDecorators
+            html = element.innerHTML
+            element.innerHTML = html.replace /\[(.+?)]/g, tagTemplate()
 
 
