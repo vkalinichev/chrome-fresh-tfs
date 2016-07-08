@@ -5,6 +5,7 @@ defaults = require "../config/defaults"
 class OptionsModel
 
     constructor: ->
+        @load options: defaults
         @fetch()
 
 
@@ -13,8 +14,6 @@ class OptionsModel
 
 
     load: ( {options} )=>
-        options = Object.assign {}, defaults, options
-
         for option, value of options
             @[ option ] = value
 
@@ -24,9 +23,12 @@ class OptionsModel
 
         for option, value of @
             if typeof value isnt "function"
+                if option is "colorizedTags"
+                    value.map ( color )-> delete color["opened"]
                 options[option] = value
 
         chrome.storage.sync.set { options }
+        setTimeout close, 100
 
 
     deleteTag: ( event, element )=>
@@ -51,28 +53,31 @@ class OptionsModel
         toggle = -> tag.opened = not tag.opened
         setTimeout toggle, 0
 
+
     toggleNewTagColorPicker: =>
         toggle = => @newTag.opened = not @newTag.opened
         setTimeout toggle, 0
+
 
     hideTooltips: =>
         for tag,index in @colorizedTags
             tag.opened = false
         @newTag.opened = false
 
+
     setColorForTag: ( event, element )=>
         color = element[ "%color%" ]
         tag = element[ "%tag%" ]
         @colorizedTags[ tag ].color = color
+
 
     setColorForNewTag: ( event, element )=>
         color = element[ "%color%" ]
         @newTag.color = color
 
 
-    cancel: =>
-        chrome.storage.sync.clear()
-        console.log "cancel"
+    cancel: ->
+        setTimeout close, 100
 
 
 module.exports = OptionsModel
