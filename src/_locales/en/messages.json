@@ -1,29 +1,29 @@
 {
-    "AppName": {
-        "message": "Fresh TFS"
-    },
-    "OptionsTitle": {
-        "message": "Fresh TFS"
-    },
-    "LabelStylizeTags": {
-        "message": "Stylize title-tags"
-    },
-    "LabelColorizeTags": {
-        "message": "Colorize title-tags"
-    },
-    "LabelStylizeCommon": {
-        "message": "Stylize other elements"
-    },
-    "TagInputPlaceholder": {
-        "message": "Enter tag name"
-    },
-    "NewTagInputPlaceholder": {
-        "message": "New tag"
-    },
-    "Save": {
-        "message": "Save"
-    },
-    "Cancel": {
-        "message": "Cancel"
-    }
+  "AppName": {
+    "message": "Fresh TFS"
+  },
+  "OptionsTitle": {
+    "message": "Fresh TFS"
+  },
+  "LabelStylizeTags": {
+    "message": "Stylize title-tags"
+  },
+  "LabelColorizeTags": {
+    "message": "Colorize title-tags"
+  },
+  "LabelStylizeCommon": {
+    "message": "Stylize other elements"
+  },
+  "TagInputPlaceholder": {
+    "message": "Enter tag name"
+  },
+  "NewTagInputPlaceholder": {
+    "message": "New tag"
+  },
+  "Save": {
+    "message": "Save"
+  },
+  "Cancel": {
+    "message": "Cancel"
+  }
 }

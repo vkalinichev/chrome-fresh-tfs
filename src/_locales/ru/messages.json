@@ -1,14 +1,29 @@
 {
-    "AppName": {
-        "message": "Fresh TFS"
-    },
-    "OptionsTitle": {
-        "message": "Настройки Fresh TFS:"
-    },
-    "Save": {
-        "message": "Сохранить"
-    },
-    "Cancel": {
-        "message": "Отмена"
-    }
+  "AppName": {
+    "message": "Fresh TFS"
+  },
+  "OptionsTitle": {
+    "message": "Fresh TFS"
+  },
+  "LabelStylizeTags": {
+    "message": "Стилизовать теги"
+  },
+  "LabelColorizeTags": {
+    "message": "Раскрашивать теги"
+  },
+  "LabelStylizeCommon": {
+    "message": "Стилизовать другие элементы"
+  },
+  "TagInputPlaceholder": {
+    "message": "Название тега"
+  },
+  "NewTagInputPlaceholder": {
+    "message": "Новый тег"
+  },
+  "Save": {
+    "message": "Сохранить"
+  },
+  "Cancel": {
+    "message": "Отмена"
+  }
 }
