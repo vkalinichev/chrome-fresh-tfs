@@ -7,6 +7,6 @@ if list
 
     chrome.storage.sync.get ( {options} )->
 
-        options Object.assign {}, defaults, options
+        options = Object.assign {}, defaults, options
 
         new Freshener options
