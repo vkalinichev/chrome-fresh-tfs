@@ -1,6 +1,6 @@
 {
   "name": "fresh-tfs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Makes a TFS more user-friendly",
   "dependencies": {
     "coffee": "^3.2.1",
