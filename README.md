@@ -12,5 +12,5 @@ Chrome Extension for TFS tags highlighting
 | 
 
 <p align='center'>
-    <img src='assets/screenshot.png' width='420'/>
+    <a title='Fresh TFS in Chrome Web Store' href='https://chrome.google.com/webstore/detail/fresh-tfs/nfefmjlaaohglofpdnhgeccegigjcalf'><img src='assets/screenshot.png' width='420'/></a>
 </p>
