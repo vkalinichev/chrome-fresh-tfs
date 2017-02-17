@@ -1,7 +1,7 @@
 {
   "name": "fresh-tfs",
   "version": "0.1.4",
-  "description": "Makes a TFS more user-friendly",
+  "description": "Makes a TFS great again",
   "dependencies": {
     "coffee": "^3.2.1",
     "coffee-script": "^1.10.0",
@@ -46,19 +46,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vkalinichev/tfs-colorizer.git"
+    "url": "git+https://github.com/vkalinichev/chrome-fresh-tfs.git"
   },
   "keywords": [
+    "chrome-extension",
     "chrome",
     "extension",
     "tfs",
     "microsoft",
+    "tag",
+    "color",
     "usability"
   ],
   "author": "vkalinichev",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vkalinichev/tfs-colorizer/issues"
+    "url": "https://github.com/vkalinichev/chrome-fresh-tfs/issues"
   },
-  "homepage": "https://github.com/vkalinichev/tfs-colorizer#readme"
+  "homepage": "https://github.com/vkalinichev/chrome-fresh-tfs#readme"
 }
