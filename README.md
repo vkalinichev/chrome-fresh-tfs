@@ -9,7 +9,7 @@ Let's make TFS great ~~again~~!
 
 Chrome Extension for TFS tags highlighting
 
-| 
+<br/><br/>
 
 <p align='center'>
     <a title='Fresh TFS in Chrome Web Store' href='https://chrome.google.com/webstore/detail/fresh-tfs/nfefmjlaaohglofpdnhgeccegigjcalf'><img src='assets/screenshot.png' width='420'/></a>
