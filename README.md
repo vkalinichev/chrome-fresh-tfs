@@ -1,4 +1,4 @@
-# <span><img src='assets/logo.png' width='24'/> Fresh TFS [![Version] [version-img]][url] [![Rating] [rating-img]][url] [![Downloads] [downloads-img]][url]</span>
+# <span><img src='assets/logo.png' width='24'/> Fresh TFS [![Version][version-img]][url] [![Rating][rating-img]][url] [![Downloads][downloads-img]][url]</span>
 Let's make TFS great ~~again~~!
 
 
